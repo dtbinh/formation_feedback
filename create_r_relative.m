@@ -17,7 +17,7 @@ flag = false;
 r_rel_heart = zeros(3,N);
 % checks if odd number of vehicles
 if (mod(N,2) == 1)
-    r_rel_heart(:,N) = [0;-1];
+    r_rel_heart(:,N) = [0;-1;0];
     N = N-1;
     flag = true;
 end

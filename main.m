@@ -11,13 +11,16 @@ clear all;
 close all;
 
 % No. of vehicles
-N = 8;
+N =20;
 
 % specify to virtual leader connected vehicles
 connections = [1];
 connections2 = [1];
 
 [A_c, A_c_2, A, A_2] = graph_create(connections, connections2, N);
+
+A_c_uni = adj_uni(A_c)
+A_c_2_uni = adj_uni(A_c_2)
 
 % fixed communcation adjacency matrix
 % A_2 = zeros(N);
