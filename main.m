@@ -11,11 +11,11 @@ clear all;
 close all;
 
 % No. of vehicles
-N =20;
+N =3;
 
 % specify to virtual leader connected vehicles
 connections = [1];
-connections2 = [1];
+connections2 = [2];
 
 [A_c, A_c_2, A, A_2] = graph_create(connections, connections2, N);
 
