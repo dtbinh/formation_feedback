@@ -7,8 +7,7 @@ L = [2 -1 -1; -1 1 0; -1 0 1];
 
 err = [20 20 20 40 40 40 60 60 60]';
 
-calc_err = (gamma*kron(L,eye(3))+alpha*eye(9))^(-1)*alpha*err
-calc_err2 = kron(gamma*L+eye(3)*alpha,eye(3))^(-1)*alpha*err
+calc_err = kron(gamma*L+eye(3)*alpha,eye(3))^(-1)*alpha*err
 
 err_true = mean([20 40 60])
 

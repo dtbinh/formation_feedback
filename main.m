@@ -11,7 +11,7 @@ clear all;
 close all;
 
 % No. of vehicles
-N =3;
+N =10;
 
 % specify to virtual leader connected vehicles
 connections = [1];
@@ -48,47 +48,34 @@ end
 % desired relative position / formation around virtual center
 [r_rel_1, r_rel_2, r_rel_3] = create_r_relative(N);
 
-
 %% Quadrotor setup
-global Jr Ix Iy Iz b d l m g Kpz Kdz Kpp Kdp Kpt Kdt Kpps Kdps ZdF PhidF ThetadF PsidF ztime phitime thetatime psitime Zinit Phiinit Thetainit Psiinit Uone Utwo Uthree Ufour Ez Ep Et Eps
 
-% of the PD controller
+% outer x-y-position PD controller gains
 kpx = 1.05;
 kdx = 1;
-
 kpy = 1.05;
 kdy = 1;
 
+% inner altitude and angle PD controller gains
 kpp = 100;
 kdp = 15;
-
 kpt = 100;
 kdt = 15;
-
 kpps = 100;
 kdps = 15;
-
 kpz = 100;
 kdz = 20;
-Gains = [kpp kdp kpt kdt kpps kdps kpz kdz];
-disp(Gains);
+
+Gains = [kpp kdp kpt kdt kpps kdps kpz kdz]
+
 % Quadrotor constants
-Ix = 7.5*10^(-3);  % Quadrotor moment of inertia around X axis
-Iy = 7.5*10^(-3);  % Quadrotor moment of inertia around Y axis
-Iz = 1.3*10^(-2);  % Quadrotor moment of inertia around Z axis
-Jr = 6.5*10^(-5);  % Total rotational moment of inertia around the propeller axis
-b = 3.13*10^(-5);  % Thrust factor
-d = 7.5*10^(-7);  % Drag factor
-l = 0.23;  % Distance to the center of the Quadrotor
 m = 0.65;  % Mass of the Quadrotor in Kg
 g = 9.81;   % Gravitational acceleration
-
 
 %% simulation
 sim simulation;
 
 %% results plot
-
 % creates new figure in the right display half with 6 subplots
 scrsz = get(groot,'ScreenSize');
 result = figure('OuterPosition',[scrsz(3)/2 0 scrsz(3)/2 scrsz(4)]);

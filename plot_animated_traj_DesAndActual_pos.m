@@ -21,7 +21,7 @@ c = ['b','m','k','r','g','b','m','k','r','g','b','m','k','r','g','b','m',...
     'g','b','m','k','r','g','b','m','k','g','b','m','k','r','g','b','m','k',...
     'g','b','m','k','r','g','b','m','k','r','g','b','m','k','r','g'];
 
-v = VideoWriter('C:\Users\Jens\Documents\Uni Stuttgart\BA\BA ohne Video\Matlab\Consensus_3D\1 formation_control\Videos\vehicle_trajectories.mp4','MPEG-4');
+v = VideoWriter('C:\Users\Jens\Documents\Uni Stuttgart\BA\BA ohne Video\Matlab\Consensus_3D\3 formation_control_quadro_feedback\Videos\vehicle_trajectories.mp4','MPEG-4');
 v.FrameRate = 24;
 v.Quality = 50;
 open(v);
