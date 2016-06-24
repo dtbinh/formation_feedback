@@ -1,5 +1,5 @@
-function [A_c, A_c_2, A, A_2] = graph_create(connections, connections2, N)
-%creates two random graphs using Erdos-Renyi-Algorithm of n-vehicles and
+function [Adj_VL, Adj_VL_2, Adj, Adj_2] = graph_create(connections, connections2, N)
+%GRAPH_CREATE gives two random graphs using Erdos-Renyi-Algorithm of n-vehicles and
 %finds minimum directed spanning tree of these two graphs
 %
 % Inputs:
@@ -14,35 +14,37 @@ function [A_c, A_c_2, A, A_2] = graph_create(connections, connections2, N)
 
 
 graphs = figure;
-scrsz = get(groot,'ScreenSize');
+scrsz = get(groot, 'ScreenSize');
 set(graphs, 'Name', 'Communication Topologies', 'NumberTitle', 'off','OuterPosition',[0 0 scrsz(3)/2 scrsz(4)/2]);
 
 % first graph
 connect = zeros(1,N);
-
 for i=1:1:length(connections)
     connect(connections(i)) = 1;
 end
 
+% call erdosRenyi 
 rnd_g = erdosRenyi(N,0.6,4);
-G = graph(rnd_g.Adj,'upper','OmitSelfLoops');
-
+G = graph(rnd_g.Adj, 'upper', 'OmitSelfLoops');
 subplot(2,2,1);
 p = plot(G);
-% find minimum spanning tree
+
+% find minimum spanning tree from the first element in the connected list
+% and create directed graph from the root of the tree
 [T,pred] = minspantree(G,'Type','forest','Root',connections(1));
 highlight(p,T)
 rootedTree = digraph(pred(pred~=0),find(pred~=0),[]);
 subplot(2,2,2);
 plot(rootedTree);
 
-A = full(rootedTree.adjacency)'
-A_c = [A connect'; zeros(1,N+1)]
-
+% creates adjacency matrixes
+Adj = full(rootedTree.adjacency)'
+Adj_VL = [Adj connect'; zeros(1,N+1)]
 
 % second graph
-connect2 = zeros(1,N);
 
+
+connect2 = zeros(1,N);
 for i=1:1:length(connections2)
     connect2(connections2(i)) = 1;
 end
@@ -52,14 +54,15 @@ G = graph(rnd_g.Adj,'upper','OmitSelfLoops');
 
 subplot(2,2,3);
 p = plot(G);
+% find minimum spanning tree from the first element in the connected list
 [T,pred] = minspantree(G,'Type','forest','Root',connections2(1));
 highlight(p,T)
 rootedTree = digraph(pred(pred~=0),find(pred~=0),[]);
 subplot(2,2,4);
 plot(rootedTree);
 
-A_2 = full(rootedTree.adjacency)'
-A_c_2 = [A_2 connect2'; zeros(1,N+1)]
+Adj_2 = full(rootedTree.adjacency)'
+Adj_VL_2 = [Adj_2 connect2'; zeros(1,N+1)]
 
 end
 

@@ -17,10 +17,12 @@ N =10;
 connections = [1];
 connections2 = [2];
 
-[A_c, A_c_2, A, A_2] = graph_create(connections, connections2, N);
+disp('Adjacency matrixes 1 and 2 with and without VL connections');
+[Adj_VL, Adj_VL_2, Adj, Adj_2] = graph_create(connections, connections2, N);
 
-A_c_uni = adj_uni(A_c)
-A_c_2_uni = adj_uni(A_c_2)
+% creates undirected graphs out of the random directed ones
+Adj_VL_und = adj_und(Adj_VL);
+Adj_VL_2_und = adj_und(Adj_VL_2);
 
 % fixed communcation adjacency matrix
 % A_2 = zeros(N);
@@ -66,6 +68,7 @@ kdps = 15;
 kpz = 100;
 kdz = 20;
 
+disp('Quadrotor Gains');
 Gains = [kpp kdp kpt kdt kpps kdps kpz kdz]
 
 % Quadrotor constants

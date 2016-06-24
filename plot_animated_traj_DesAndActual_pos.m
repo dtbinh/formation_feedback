@@ -8,10 +8,47 @@ N = size(vehicle_pos.data,2);
 timesteps = size(vehicle_pos.data,3);
 
 % cube setup
-cube_setup;
+l = 0.2 % edgelength
+
+X_u = [l l -l -l];
+Y_u = [l -l -l l];
+Z_u = [-l -l -l -l];
+
+Ar_u = [X_u;Y_u;Z_u];
+
+X_o = [l l -l -l];
+Y_o = [l -l -l l];
+Z_o = [l l l l];
+
+Ar_o = [X_o;Y_o;Z_o];
+
+X_l = [l l -l -l];
+Y_l = [-l -l -l -l];
+Z_l = [-l l l -l];
+
+Ar_l = [X_l;Y_l;Z_l];
+
+X_r = [l l -l -l];
+Y_r = [l l l l];
+Z_r = [-l l l -l];
+
+Ar_r = [X_r;Y_r;Z_r];
+
+X_v = [-l -l -l -l];
+Y_v = [-l -l l l];
+Z_v = [-l l l -l];
+
+Ar_v = [X_v;Y_v;Z_v];
+
+X_h = [l l l l];
+Y_h = [-l -l l l];
+Z_h = [-l l l -l];
+
+Ar_h = [X_h;Y_h;Z_h];
+
+cube_init = [Ar_u Ar_o Ar_l Ar_r Ar_v Ar_h [-l l -l]'];
 
 figure('Position',[0 100 800 800]);
-
 
 % color vector
 c = ['b','m','k','r','g','b','m','k','r','g','b','m','k','r','g','b','m',...
