@@ -11,32 +11,14 @@ clear all;
 close all;
 
 % No. of vehicles
-N =5;
+N =6;
 
 % specify to virtual leader connected vehicles
 connections = [1];
-connections2 = [2];
+connections_2 = [2];
 
 disp('Adjacency matrixes 1 and 2 with and without VL connections');
-[Adj_VL, Adj_VL_2, Adj, Adj_2] = graph_create(connections, connections2, N);
-
-% creates undirected graphs out of the random directed ones
-Adj_VL_und = adj_und(Adj_VL);
-Adj_VL_2_und = adj_und(Adj_VL_2);
-
-% fixed communcation adjacency matrix
-% A_2 = zeros(N);
-% A_2(1,2) = 1;
-% A_2(2,1) = 1;
-% A_2(3,2) = 1;
-% A_2(4,3) = 1;
-% A_2(5,1) = 1;
-% A_2(6,3) = 1;
-% A_2(7,3) = 1;
-% A_2(7,8) = 1;
-% l_c = [1 0 0 0 0 0 0 0];
-% A_2
-% A_c_2 = [A_2 l_c'; zeros(1,N+1)]
+[Adj_VL, Adj_VL_2, Adj, Adj_2] = graph_create2(connections, connections_2, N);
 
 % random initial values of the reference frame of each vehicle
 %xi_init = randn(6,N);
