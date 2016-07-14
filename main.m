@@ -17,6 +17,9 @@ N =6;
 connections = [1];
 connections_2 = [2];
 
+% specifiy maximum velocities
+
+
 disp('Adjacency matrixes 1 and 2 with and without VL connections');
 [Adj_VL, Adj_VL_2, Adj, Adj_2] = graph_create2(connections, connections_2, N);
 
@@ -67,13 +70,13 @@ result = figure('OuterPosition',[scrsz(3)/2 0 scrsz(3)/2 scrsz(4)]);
 set(result, 'Name', 'Simulation Results Consensus', 'NumberTitle', 'off');
 
 % splits up simulation timeseries results into the different states
-time = xi_ref_i.time;
-x_ref_i = timeseries(xi_ref_i.data(1,:,:), time, 'Name', 'x-coordinate');
-y_ref_i = timeseries(xi_ref_i.data(2,:,:), time, 'Name', 'y-coordinate');
-z_ref_i = timeseries(xi_ref_i.data(3,:,:), time, 'Name', 'z-coordinate');
-theta_ref_i = timeseries(xi_ref_i.data(4,:,:), time, 'Name', 'theta-value');
-phi_ref_i = timeseries(xi_ref_i.data(5,:,:), time, 'Name', 'theta-value');
-psi_ref_i = timeseries(xi_ref_i.data(6,:,:), time, 'Name', 'theta-value');
+time = xi_i.time;
+x_ref_i = timeseries(xi_i.data(1,:,:), time, 'Name', 'x-coordinate');
+y_ref_i = timeseries(xi_i.data(2,:,:), time, 'Name', 'y-coordinate');
+z_ref_i = timeseries(xi_i.data(3,:,:), time, 'Name', 'z-coordinate');
+phi_ref_i = timeseries(xi_i.data(4,:,:), time, 'Name', 'theta-value');
+theta_ref_i = timeseries(xi_i.data(5,:,:), time, 'Name', 'theta-value');
+psi_ref_i = timeseries(xi_i.data(6,:,:), time, 'Name', 'theta-value');
 
 subplot(3,2,1), plot(xi_ref);
 legend('x_{ref}','y_{ref}','z_{ref}','theta_{ref}','phi_{ref}','psi_{ref}');
@@ -96,6 +99,6 @@ subplot(3,2,5), plot(z_ref_i);
 %legend('v1','v2','v3','v4', 'v5');
 title('Followers z-coordinate');
 
-subplot(3,2,6), plot(psi_ref_i);
+subplot(3,2,6), plot(phi_ref_i);
 %legend('v1','v2','v3','v4','v5');
-title('Followers theta-valua');
+title('Followers phi-valua');
