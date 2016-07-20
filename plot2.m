@@ -8,4 +8,4 @@ ylabel('pos / angle in rad');
 set(gcf,'color','w');
 
 
-export_fig test.pdf
+export_fig test.eps

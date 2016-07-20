@@ -68,7 +68,11 @@ opengl('software')
 for j=1:30:(timesteps)
     % plot of the reference frame trajectory
     plot3(xi_ref.data(:,1),xi_ref.data(:,2),xi_ref.data(:,3));
-    axis([-2 2 -1 3 -1 3]);
+    scatter3(xi_ref.data(j,1),xi_ref.data(j,2),xi_ref.data(j,3),80,'r','o');
+    axis([0 2 -1 1 0 2]);
+    xlabel('x-Axis (meters)');
+    ylabel('y-Axis (meters)');
+    zlabel('z-Axis (meters)');
     grid on;
     hold on;
     

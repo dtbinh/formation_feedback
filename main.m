@@ -57,7 +57,7 @@ disp('Quadrotor Gains');
 Gains = [kpp kdp kpt kdt kpps kdps kpz kdz]
 
 % Quadrotor constants
-m = 0.65;  % Mass of the Quadrotor in Kg
+m = 0.4;  % Mass of the Quadrotor in Kg wie Parrot Bepo
 g = 9.81;   % Gravitational acceleration
 
 %% simulation
